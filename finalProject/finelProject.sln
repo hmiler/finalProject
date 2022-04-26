@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2041
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "finelProject", "finelProject\finelProject.vcxproj", "{407B20DE-ABCC-4628-A5F3-097F4D17F263}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "finelProject", "finelProject.vcxproj", "{407B20DE-ABCC-4628-A5F3-097F4D17F263}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
