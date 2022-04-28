@@ -1,0 +1,14 @@
+﻿  BaseMessage.cpp
+  Buffer.cpp
+  Camera.cpp
+c:\users\admin\desktop\c\client\finelproject\camera.cpp(11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\desktop\c\client\finelproject\camera.cpp(18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\desktop\c\client\finelproject\camera.cpp(18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  DiscoverMessage.cpp
+  main.cpp
+  newSimulator.cpp
+  random.cpp
+  Simulator.cpp
+  StatusMessage.cpp
+  Generating Code...
+  finelProject.vcxproj -> C:\Users\admin\Desktop\c\client\Debug\finelProject.exe
