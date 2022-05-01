@@ -1,15 +1,12 @@
-#ifndef Connect_hpp
-#define Connect_hpp
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <netdb.h>
+#include "stdafx.h"
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
+#pragma comment (lib, "Ws2_32.lib")
+#include <iostream>
 #include <string.h>
-
+#include <sstream>
+#include <WinSock2.h>
+#include <WS2tcpip.h>
+using namespace std;
 
 #include <string>
 #include <cstdlib>

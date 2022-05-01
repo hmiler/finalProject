@@ -3,9 +3,15 @@
 
 
 void Buffer::addToBuffer(char * message) {
-	buffer = (char **)(realloc(buffer, index * sizeof(char *)));
-	buffer[index - 1] = message;
+	m.lock();
+	char ** tmpbuffer = (char **)(realloc(buffer, index * sizeof(char *)));
+	if (tmpbuffer != NULL) {
+		buffer = tmpbuffer;
+		buffer[index - 1] = message;
+	}
+	
 	index++;
+	m.unlock();
 }
 char ** Buffer::getBuffer() {
 	return buffer;

@@ -4,6 +4,7 @@
 #include"Buffer.h"
 #include "random.h"
 #include "DiscoverMessage.h"
+#include "BaseMessage.h"
 static int idCamera = 0;
 class Camera {
 	char cameraId;
@@ -13,6 +14,7 @@ class Camera {
 	int indexOfMessage;
 public:
 Camera();
+~Camera();
 bool isActive;
 void generate();
 void sendToBuffer();

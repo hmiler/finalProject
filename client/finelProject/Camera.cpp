@@ -2,10 +2,17 @@
 
 
 Camera::Camera() {
-		this->cameraId = idCamera++;
+	this->messages =(BaseMessage**)malloc(sizeof(BaseMessage*));
+		this->cameraId = ++idCamera;
 		this->isActive = true;
 		indexOfMessage = 0;
 	}
+Camera::~Camera() {
+	for (int i = 0; i < indexOfMessage; i++) {
+		free(messages[i]);
+	}
+	messages = NULL;
+}
 
 void Camera::generate() {
 	int count = getProb(1, 6);
@@ -42,11 +49,10 @@ void Camera::sendToBuffer() {
 			messages[j]->parseBack();
 			buffer->addToBuffer( reinterpret_cast<char*>( messages[j]->getMessageBuffer()));
 		
-
-
 		}
 		free(messages);
 		messages = NULL;
+		indexOfMessage = 0;
 	}
 	void Camera::run() {
 		while (isActive)
