@@ -4,27 +4,23 @@ Buffer::Buffer() {
 	buffer = (char**)malloc(sizeof(char*));
 	index = 1;
 }
+Buffer::~Buffer() {
+	free(buffer);
+};
 
 void Buffer::addToBuffer(char * message) {
 	m.lock();
-	char ** tmpbuffer = (char **)(realloc(buffer, index * sizeof(char *)));
-	if (tmpbuffer != NULL) {
-		buffer = tmpbuffer;
-		buffer[index - 1] = message;
-	}
-	
+	buffer = (char**)(realloc(buffer, this->index * sizeof(char*)));
+	buffer[index - 1] = message;
 	index++;
 	m.unlock();
 }
 char ** Buffer::getBuffer() {
-	m.lock();
-	char** tmp = buffer;
-	return tmp;
-	m.unlock();
+	return buffer;
 }
 void Buffer::cleanBuffer() {
 	m.lock();
-
+	free(buffer);
 	buffer = (char**)malloc(sizeof(char*));
 	index = 1; 
 	m.unlock();

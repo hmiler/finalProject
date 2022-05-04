@@ -1,22 +1,20 @@
 #pragma once
-#include <iostream>
-#include "BaseMessage.h"
-using namespace std;
+#include"BaseMessage.h"
+#include<iostream>
+#ifndef Discover
+#define discover
+
 
 class DiscoverMessage :public BaseMessage {
-protected:
+public:
 	float distance;
 	float angle;
 	float speed;
 
-public:
-	DiscoverMessage(unsigned char* buffer, int id) ;
-
-	DiscoverMessage(float distance, float angle, float speed, int id) ;
-
-	virtual void parseMessage();
-
+	DiscoverMessage(int id, unsigned char* buffer);
+	DiscoverMessage(int id, float dis, float an, float s);
+	void parseMessage();
 	virtual void parseBack();
-
-	virtual void print();
+	void print();
 };
+#endif // !Discover

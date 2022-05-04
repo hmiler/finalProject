@@ -1,36 +1,38 @@
 
+
 const Net = require('net');
-const port = 80;
-function parseBuffer(buffer){
-    let message={};
-    message.type=buffer[1];
-    if(message.type==1)
-    {
-        message.status=buffer[2];
-    
-    }
-    else{
-        message.distance=buffer[2] 
-        message.angle=buffer[6]   
-        message.speed=buffer[10]   
-    }
-    console.log(message)
-}
+const { stringify } = require('querystring');
+const port =81;
 const server = new Net.Server();
 server.listen(port, function() {
-    console.log(`Server listening for connection requests on socket localhost:${port}`)
+   
+    console.log(`Server listening for connection requests on socket localhost:${port}`);
 });
-
 server.on('connection', function(socket) {
     console.log('A new connection has been established.');
-    socket.write('Hello, client.');
-    socket.on('data', function(buffer) {
-        console.log(`Data received from client: ${buffer.toString()}`);
+    socket.on('data', function(chunk) {
+        parseBuffer(chunk);
     });
-    socket.on('end', function() {
+    socket.on('close', function() {
         console.log('Closing connection with the client');
     });
     socket.on('error', function(err) {
         console.log(`Error: ${err}`);
     });
 });
+
+
+const parseBuffer=(buffer)=> {
+     let message = {}
+     message.type = buffer[0];
+     let ezerBuf = buffer.slice(2)
+     if (message.type == 1) {
+         message.status = Buffer.from(ezerBuf).readInt8(0)
+     } 
+     else {
+         message.distance = Buffer.from(ezerBuf).readFloatLE(0);
+         message.angle = Buffer.from(ezerBuf).readFloatLE(4);
+         message.speed = Buffer.from(ezerBuf).readFloatLE(8);
+     }
+     console.log(message);
+}

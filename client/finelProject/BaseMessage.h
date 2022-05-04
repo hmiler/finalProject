@@ -1,5 +1,9 @@
 #pragma once
 #include <iostream>
+#include<cstring>
+
+#ifndef BaseMessage
+#define baseMessage
 class BaseMessage {
 protected:
 	unsigned char* messageBuffer;
@@ -10,9 +14,10 @@ public:
 
 	BaseMessage(int type, int id);
 
-	~BaseMessage();
+	BaseMessage();
 	virtual void parseMessage() = 0;
 	virtual void parseBack() = 0;
 	virtual void print() = 0;
 	unsigned char* getMessageBuffer();
 };
+#endif

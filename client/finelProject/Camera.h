@@ -3,13 +3,12 @@
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #define CAMERA
 #include <iostream>
-#include"Simulator .h"
 #include"Buffer.h"
 #include "random.h"
 #include "DiscoverMessage.h"
 #include "BaseMessage.h"
 #include "StatusMessage.h"
-static int idCamera = 0;
+
 #pragma comment (lib, "Ws2_32.lib")
 #include <iostream>
 #include <string.h>
@@ -19,21 +18,27 @@ static int idCamera = 0;
 
 using namespace std;
 class Camera {
-	char cameraId;
 	
-	BaseMessage ** messages;
-	
-	int indexOfMessage;
 public:
+	char cameraId;
+
+	BaseMessage** messages;
+
+	int indexOfMessage;
 	Buffer* buf;
 	SOCKET connection;
-Camera();
+Camera(char id);
 ~Camera();
 bool isActive;
+Buffer* sendBufferToServer();
+void print();
+
 void generate();
 void sendToBuffer();
 void run();
 void stop();
+
 void sendServer();
+
 };
 #endif 

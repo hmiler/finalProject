@@ -5,10 +5,12 @@
 #include <iostream>
 #include"Camera.h"
 #include <vector>
+#include "readMyConfig.h"
+#include "sendToServer.h"
 #ifndef generalSIMULATOR
 #define generalSIMULATOR
 using namespace std::literals::chrono_literals;
-const int timems=2;
+
 
 using namespace std;
 #include "Camera.h"
@@ -16,9 +18,9 @@ class newSimulator
 {
 	
 public:
-	const int sumCamera = 10;
+
   void running();
-  Camera* cameraArr = new Camera[sumCamera];
+  Camera ** cameraArr;
   thread* sendThreadsArr;
   thread* runThreadsArr;
   thread* stopThreadArr;

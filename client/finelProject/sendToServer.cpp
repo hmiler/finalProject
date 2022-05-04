@@ -27,7 +27,7 @@ void start() {
 	connection = socket(AF_INET, SOCK_STREAM, NULL);
 	if (connect(connection, (SOCKADDR*)&addr, addrLen) == 0) {
 		cout << "Connected!" << endl;
-		//getline(cin, getInput);
+		
 		char x;
 		//cin >> x;
 	}
@@ -43,7 +43,7 @@ void send(char** buf, int len) {
 		if (buf[i][0] == 2)
 			send(connection, buf[i], 14, 0);
 	}
-	//send(connection, "5ddddd", 5, 0);
+	
 	cout << "Message sent!" << endl;
 
 }
@@ -52,6 +52,6 @@ void finish() {
 	//
 	WSACleanup();
 
-	//cin >> x;
+
 	cout << "Socket closed." << endl << endl;
 }

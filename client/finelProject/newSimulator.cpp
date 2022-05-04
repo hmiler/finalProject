@@ -1,62 +1,62 @@
 #include "newSimulator.h"
-newSimulator::~newSimulator() {
-	delete[]stopThreadArr;
-	delete[]runThreadsArr;
-	delete[]sendThreadsArr;
-}
+int num_of_camera = return_num_of_camera();
+int timeMs=return_time_in_ms();
+
 
 newSimulator::newSimulator() {
-	sendThreadsArr = new thread[sumCamera];
-	runThreadsArr = new thread[sumCamera];
-	stopThreadArr = new thread[sumCamera];
+	this->cameraArr = (Camera**)(malloc(num_of_camera * sizeof(Camera)));
+	for (int i = 0; i < num_of_camera; i++) {
+		cameraArr[i] = new Camera('a' + i);
+	}
+	std::thread tf(&newSimulator::running, this);
+	start();
+	tf.join();
 }
-//Camera arrCamera[sumCamera];
-
-void newSimulator::sendServer(Camera * c) {
-	while (true) {
-		while (c->isActive)
+void newSimulator::sendServer(Camera* c) {
+	while (c->isActive)
+	{
+		for (int k = 0; k < timeMs; k++)
 		{
-		
-		for (int j = 0; j < c->buf->index; j++)
-		{
-			c->sendServer(/*c->buf->buffer[j]*/);
 			std::this_thread::sleep_for(1s);
+			send(c->sendBufferToServer()->getBuffer(), c->sendBufferToServer()->index);
+			c->sendBufferToServer()->cleanBuffer();
 		}
-		}
+		
 	}
 }
 
-//void newSimulator::runSimulator(int i) {
-//	arrCamera[i].run();
-//}
-//
-//void newSimulator::stopSimulator(int i) {
-//	arrCamera[i].stop();
-//}
 
 void newSimulator::running()
 {
-	
+	sendThreadsArr=new thread[num_of_camera];
+	runThreadsArr = new thread[num_of_camera];
+ stopThreadArr = new thread[num_of_camera];
 	/*std::vector<thread> threadRun(sumCamera);
 	std::vector<thread> threadStop(sumCamera);
 	std::vector< thread> sendThreadArr(sumCamera);*/
 
-	for (int i = 0; i < sumCamera; i++) {
-		runThreadsArr[i] = thread(&Camera::run, &cameraArr[i]);
-		sendThreadsArr[i] = thread(&newSimulator::sendServer, this, &cameraArr[i]);
+	for (int i = 0; i < num_of_camera; i++) {
+		runThreadsArr[i] = thread(&Camera::run,cameraArr[i]);
+		sendThreadsArr[i] = thread(&newSimulator::sendServer, this, cameraArr[i]);
 
 	}
-	for (int j = 0; j < sumCamera; j++) {
+	for (int j = 0; j < num_of_camera; j++) {
 		getchar();
-		stopThreadArr[j] = thread(&Camera::stop, &cameraArr[j]);
+		stopThreadArr[j] = thread(&Camera::stop, cameraArr[j]);
 
 	}
-	/*for (int x = 0; x < sumCamera; x++) {
-		threadRun[x].join();
-		sendThreadArr[x].join();
-		threadStop[x].join();
-	}*/
+	for (int x = 0; x < num_of_camera; x++) {
+		sendThreadsArr[x].join();
+		runThreadsArr[x].join();
+		stopThreadArr[x].join();
+	}
 }
+newSimulator::~newSimulator() {
+	for (int i = 0; i < num_of_camera; i++) {
+		delete cameraArr[i];
+	}
+	free(cameraArr);
 
+}
 
 

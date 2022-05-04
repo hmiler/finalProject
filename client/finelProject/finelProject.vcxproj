@@ -122,8 +122,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="newSimulator.cpp" />
     <ClCompile Include="random.cpp" />
+    <ClCompile Include="readMyConfig.cpp" />
     <ClCompile Include="sendToServer.cpp" />
-    <ClCompile Include="Simulator.cpp" />
     <ClCompile Include="StatusMessage.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -131,13 +131,14 @@
     <ClInclude Include="Buffer.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DiscoverMessage.h" />
-    <ClInclude Include="Global.h" />
-    <ClInclude Include="Header.h" />
     <ClInclude Include="newSimulator.h" />
     <ClInclude Include="random.h" />
+    <ClInclude Include="readMyConfig.h" />
     <ClInclude Include="sendToServer.h" />
-    <ClInclude Include="Simulator .h" />
     <ClInclude Include="StatusMessage.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="config.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
