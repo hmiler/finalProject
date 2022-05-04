@@ -4,8 +4,9 @@ statusMessage::statusMessage(unsigned char* buffer, int id) :BaseMessage(buffer,
 		status = 0;
 	}
 
-statusMessage::statusMessage(int id) :BaseMessage(1, id) {
-		status = 0;
+statusMessage::statusMessage(int id, short stat) : BaseMessage(1, id) {
+	
+		status = stat;
 	}
 
  void statusMessage::parseMessage() {

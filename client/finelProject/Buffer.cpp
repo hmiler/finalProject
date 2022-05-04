@@ -1,6 +1,9 @@
 #include "Buffer.h"
 
-
+Buffer::Buffer() {
+	buffer = (char**)malloc(sizeof(char*));
+	index = 1;
+}
 
 void Buffer::addToBuffer(char * message) {
 	m.lock();
@@ -14,10 +17,15 @@ void Buffer::addToBuffer(char * message) {
 	m.unlock();
 }
 char ** Buffer::getBuffer() {
-	return buffer;
+	m.lock();
+	char** tmp = buffer;
+	return tmp;
+	m.unlock();
 }
 void Buffer::cleanBuffer() {
-	free(buffer);
-	buffer = NULL;
-	index = 0;
+	m.lock();
+
+	buffer = (char**)malloc(sizeof(char*));
+	index = 1; 
+	m.unlock();
 }

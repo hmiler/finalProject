@@ -1,3 +1,8 @@
-﻿  main.cpp
-c:\users\admin\desktop\c\finalproject\client\finelproject\main.cpp(32): warning C4101: 'ipvalue': unreferenced local variable
-  finelProject.vcxproj -> C:\Users\admin\Desktop\c\finalProject\client\Debug\finelProject.exe
+﻿  Camera.cpp
+C:\sari\chani\test\finalProject\client\finelProject\Camera.cpp(19,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\sari\chani\test\finalProject\client\finelProject\Camera.cpp(24,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\sari\chani\test\finalProject\client\finelProject\Camera.cpp(30,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\sari\chani\test\finalProject\client\finelProject\Camera.cpp(30,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\sari\chani\test\finalProject\client\finelProject\Camera.cpp(33,15): warning C4244: 'initializing': conversion from 'float' to 'short', possible loss of data
+C:\sari\chani\test\finalProject\client\finelProject\Camera.cpp(90,11): warning C4101: 'ipvalue': unreferenced local variable
+  finelProject.vcxproj -> C:\sari\chani\test\finalProject\client\Debug\finelProject.exe

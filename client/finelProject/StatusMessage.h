@@ -7,7 +7,7 @@ protected:
 	short status;
 public:
 	statusMessage(unsigned char* buffer, int id);
-	statusMessage(int id);
+	statusMessage(int id, short stat);
 
 	virtual void parseMessage();
 

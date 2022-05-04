@@ -1,5 +1,5 @@
 //
-//#include "newSimulator.h"
+#include "newSimulator.h"
 //int main()
 //{
 //
@@ -8,46 +8,24 @@
 //
 //}
 //#include "stdafx.h"
-#define _WINSOCK_DEPRECATED_NO_WARNINGS
-#pragma comment (lib, "Ws2_32.lib")
-#include <iostream>
-#include <string.h>
-#include <sstream>
-#include <WinSock2.h>
-#include <WS2tcpip.h>
-using namespace std;
+
 
 
 int main()
 {
-	WSAData wsaData;
-	WORD DllVersion = MAKEWORD(2, 1);
-	if (WSAStartup(DllVersion, &wsaData) != 0) {
-		cout << "Winsock Connection Failed!" << endl;
-		exit(1);
+	/*int sumC =10;*/
+	//	config();
+		//cout << "sum::::::::" << sumC << " , " << ms;
+	newSimulator* g = new newSimulator();
+	g->running();
+	/*for (int i = 0; i < sumC; i++) {*/
+		//g->sendThreadsArr[i].join();
+		/*g->runThreadsArr[i].join();
+		g->stopThreadArr[i].join();
 	}
-	string getInput = "";
-	SOCKADDR_IN addr;
-	int addrLen = sizeof(addr);
-	IN_ADDR ipvalue;
-	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
-	addr.sin_port = htons(80);
-	addr.sin_family = AF_INET;
-	
-	SOCKET connection = socket(AF_INET, SOCK_STREAM, NULL);
-	string buffer = "hello ";
-	if (connect(connection, (SOCKADDR*)&addr, addrLen) == 0) {
-		cout << "Connected!" << endl;
-		send(connection, buffer.c_str(), buffer.length(), 0);
-		closesocket(connection);
-		/*WSACleanup();*/
-		getline(cin, getInput);
-		exit(0);
+	for (int i = 0; i < sumC; i++)
+	{
+		cout << "print " << "camera arr " << (i + 1) << ":\n";
 	}
-	else {
-		cout << "Error Connecting to Host" << endl;
-		exit(1);
-	}
-	getchar();
-	return 0;
+	return 1;*/
 }
