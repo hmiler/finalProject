@@ -1,4 +1,0 @@
-﻿  sendToServer.cpp
-C:\sari\chani\test\finalProject\client\finelProject\sendToServer.cpp(22,10): warning C4101: 'ipvalue': unreferenced local variable
-C:\sari\chani\test\finalProject\client\finelProject\sendToServer.cpp(31,8): warning C4101: 'x': unreferenced local variable
-  finelProject.vcxproj -> C:\sari\chani\test\finalProject\client\Debug\finelProject.exe
